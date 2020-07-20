@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WakeUpLanSender.Core
 {
@@ -32,26 +35,6 @@ namespace WakeUpLanSender.Core
             {
 
             }
-        }
-
-
-        public static async Task<PhysicalAddress> GetPhysicalAddressAsync(IPAddress ip)
-        {
-            if (ip == null)
-                throw new ArgumentNullException();
-
-            Process arp = new Process();
-            arp.StartInfo = new ProcessStartInfo()
-            {
-                FileName = "arp",
-                Arguments = "-a " + ip,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-            arp.Start();
-
-
         }
     }
 }
